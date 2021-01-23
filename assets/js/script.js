@@ -18,6 +18,7 @@ function init() {
   $("#currentDay").text(today);
   renderTables(workHours);
   renderSavedEvents();
+  renderClearButton();
 };
 
 function renderTables(arr) {
@@ -123,6 +124,17 @@ if (eventNine !== null) {
 }
 }
 
+function renderClearButton() {
+  var clearButton = $("<button></button>");
+  var newDiv = $("<div></div>");
+  newDiv.addClass("d-grid gap-2 col-6 mx-auto");
+  clearButton.addClass("btn btn-danger");
+  clearButton.attr({type: "button", id: "clear-button"});
+  clearButton.html("Clear Events");
+  newDiv.append(clearButton);
+  $("body").append(newDiv);
+}
+
 init();
 
 $(".saveBtn").click(function() {
@@ -170,6 +182,10 @@ $(".saveBtn").click(function() {
     eventNine = userInput;
     localStorage.setItem("eventNine", JSON.stringify(eventNine));
   }
-  
+});
+
+$("#clear-button").click(function() {
+  localStorage.clear();
+  location.reload()
 });
 
