@@ -6,11 +6,8 @@ This is a simple work day scheduler that has basic 9-5 hours for you plan out yo
 
 ## Screenshot
 
-
 ![Website ScreenShot](assets/images/Website_No_Data.png)
 ![Website ScreenShot](assets/images/Website_Data.png)
-
-
 
 ## Links
 
