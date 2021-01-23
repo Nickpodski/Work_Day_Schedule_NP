@@ -1,14 +1,23 @@
 var workHours = ["9", "10", "11", "12", "13", "14", "15", "16", "17"];
 var dt = luxon.DateTime.local();
-timeBlocks = $(".time-blocks");
-currentHour = dt.hour.toLocaleString();
+var timeBlocks = $(".time-blocks");
+var currentHour = dt.hour.toLocaleString();
+var eventOne = "";
+var eventTwo = "";
+var eventThree = "";
+var eventFour = "";
+var eventFive = "";
+var eventSix = "";
+var eventSeven = "";
+var eventEight = "";
+var eventNine = "";
 
 function init() {
   // Display Today's date on top of page.
   var today = luxon.DateTime.local().toLocaleString(luxon.DateTime.DATE_HUGE);
   $("#currentDay").text(today);
-
   renderTables(workHours);
+  renderSavedEvents();
 };
 
 function renderTables(arr) {
@@ -28,8 +37,8 @@ function renderTables(arr) {
     var svg = $("<svg></svg>");
     var path = $("<path></path>")
     var input = $("<textarea></textarea>");
-    input.attr("id", i);
-    btn.attr("id", i);
+    input.attr("id", "input" + i);
+    btn.attr("id", i)
     if (arr[i] > 12) {
       text = arr[i] - 12 + "PM";
     }
@@ -75,7 +84,92 @@ function renderTables(arr) {
   };
 };
 
-
+function renderSavedEvents() {
+var eventOne = JSON.parse(localStorage.getItem("eventOne"));
+eventTwo = JSON.parse(localStorage.getItem("eventTwo"));
+eventThree = JSON.parse(localStorage.getItem("eventThree"));
+eventFour = JSON.parse(localStorage.getItem("eventFour"));
+eventFive = JSON.parse(localStorage.getItem("eventFive"));
+eventSix = JSON.parse(localStorage.getItem("eventSix"));
+eventSeven = JSON.parse(localStorage.getItem("eventSeven"));
+eventEight = JSON.parse(localStorage.getItem("eventEight"));
+eventNine = JSON.parse(localStorage.getItem("eventNine"));
+if (eventOne !== null) {
+  $("#input0").text(eventOne);
+}
+if (eventTwo !== null) {
+  $("#input1").text(eventTwo);
+}
+if (eventThree !== null) {
+  $("#input2").text(eventThree);
+}
+if (eventFour !== null) {
+  $("#input3").text(eventFour);
+}
+if (eventFive !== null) {
+  $("#input4").text(eventFive);
+}
+if (eventSix !== null) {
+  $("#input5").text(eventSix);
+}
+if (eventSeven !== null) {
+  $("#input6").text(eventSeven);
+}
+if (eventEight !== null) {
+  $("#input7").text(eventEight);
+}
+if (eventNine !== null) {
+  $("#input8").text(eventNine);
+}
+}
 
 init();
+
+$(".saveBtn").click(function() {
+  var idNumber = $(this).attr("id");
+  // console.log(idNumber);
+  var inputId = $("#input" + idNumber);
+  var userInput = $(inputId).val();
+  // console.log(userInput);
+  var a = parseInt(idNumber);
+  console.log
+  if (a === 0) {
+    eventOne = userInput;
+    console.log(eventOne);
+    localStorage.setItem("eventOne", JSON.stringify(eventOne));
+  }
+  if (a === 1) {
+    eventTwo = userInput;
+    localStorage.setItem("eventTwo", JSON.stringify(eventTwo));
+  }
+  if (a === 2) {
+    eventThree = userInput;
+    localStorage.setItem("eventThree", JSON.stringify(eventThree));
+  }
+  if (a === 3) {
+    eventFour = userInput;
+    localStorage.setItem("eventFour", JSON.stringify(eventFour));
+  }
+  if (a === 4) {
+    eventFive = userInput;
+    localStorage.setItem("eventFive", JSON.stringify(eventFive));
+  }
+  if (a === 5) {
+    eventSix = userInput;
+    localStorage.setItem("eventSix", JSON.stringify(eventSix));
+  }
+  if (a === 6) {
+    eventSeven = userInput;
+    localStorage.setItem("eventSeven", JSON.stringify(eventSeven));
+  }
+  if (a === 7) {
+    eventEight = userInput;
+    localStorage.setItem("eventEight", JSON.stringify(eventEight));
+  }
+  if (a === 8) {
+    eventNine = userInput;
+    localStorage.setItem("eventNine", JSON.stringify(eventNine));
+  }
+  
+});
 
